@@ -2,7 +2,7 @@
 [![phorm.ai](https://img.shields.io/badge/ask%20phorm.ai-8A2BE2)](https://www.phorm.ai/query?projectId=f7ddaf97-2b90-4515-a364-855258454655)
 [![Pyversions](https://img.shields.io/pypi/pyversions/chunkey-bert.svg?style=flat-square)](https://pypi.python.org/pypi/chunkey-bert)
 
-Add# ChunkeyBERT - Unsupervised Keyword Extraction from Long Documents #
+# ChunkeyBERT - Unsupervised Keyword Extraction from Long Documents #
 ## Overview ##
 ChunkeyBert is a minimal and easy-to-use keyword extraction technique that leverages BERT embeddings for unsupervised 
 keyphrase extraction from text documents. ChunkeyBert is a modification of the 
