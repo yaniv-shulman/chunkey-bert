@@ -11,7 +11,7 @@ classifiers = [
     "Topic :: Scientific/Engineering :: Artificial Intelligence"
 ]
 description = "Modification of the KeyBERT method to extract keywords and keyphrases using chunks. This provides better results, especialy when handling long documents."
-homepage = "https://github.com/yaniv-shulman/chunkey-keybert"
+homepage = "https://github.com/yaniv-shulman/chunkey-bert"
 keywords = [
     "machine learning",
 ]
@@ -21,7 +21,7 @@ packages = [
 ]
 readme = "README.md"
 repository = "https://github.com/yaniv-shulman/chunkey-bert"
-version = "0.2.0"
+version = "0.3.0"
 
 [tool.poetry.group.experiments]
 optional = true
