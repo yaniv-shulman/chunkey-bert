@@ -1,5 +1,6 @@
 ![Tests](https://github.com/yaniv-shulman/chunkey-bert/actions/workflows/linting_and_tests.yml/badge.svg?branch=main)
 [![phorm.ai](https://img.shields.io/badge/ask%20phorm.ai-8A2BE2)](https://www.phorm.ai/query?projectId=f7ddaf97-2b90-4515-a364-855258454655)
+[![Pyversions](https://img.shields.io/pypi/pyversions/chunkey-bert.svg?style=flat-square)](https://pypi.python.org/pypi/chunkey-bert)
 
 # ChunkeyBERT #
 ## Overview ##
