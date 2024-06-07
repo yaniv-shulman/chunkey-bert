@@ -31,7 +31,10 @@ the key differences:
 **Document chunking**: ChunkeyBERT uses a chunking method to divide a long document into smaller chunks. This is done through the chunker 
 parameter in the extract_keywords method. The chunker can be any callable that takes a string (the document) and returns
 a list of strings (the chunks). This allows ChunkeyBERT to process each chunk independently, making it more effective at
-handling long documents. A chunker could be as simple as ```python chunker: Callable[[str], List[str]] = lambda text: [t for t in text.split("\n\n") if len(t) > 25] ```
+handling long documents. A chunker could be as simple as 
+```python
+chunker: Callable[[str], List[str]] = lambda text: [t for t in text.split("\n\n") if len(t) > 25]
+```
 or can wrap more complicated logic such as a Langchain chunker for example.
 
 **Handling of chunks**: After chunking, ChunkeyBERT applies KeyBERT's keyword extraction to each chunk separately.
