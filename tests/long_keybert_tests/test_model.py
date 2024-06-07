@@ -282,21 +282,29 @@ def test_extract_chunks_from_docs_expected_outputs(
     "top_k, counts_doc, expected_idx, expected_score",
     [
         # top_k and weights.
-        (None, None, [3, 2, 4, 0, 1], [0.66392495, 0.66392495, 0.57784989, 0.51504675, 0.23495325]),
+        (None, None, [[3, 2, 4, 0, 1]], [0.66392495, 0.66392495, 0.57784989, 0.51504675, 0.23495325]),
         # top_k specified, equal weights.
-        (3, [1] * 5, [3, 2, 4], [0.66392495, 0.66392495, 0.57784989]),
+        (3, [1] * 5, [[3, 2, 4]], [0.66392495, 0.66392495, 0.57784989]),
         # top_k specified and exceeds the number of elements, equal weights.
-        (7, None, [3, 2, 4, 0, 1], [0.66392495, 0.66392495, 0.57784989, 0.51504675, 0.23495325]),
+        (7, None, [[3, 2, 4, 0, 1]], [0.66392495, 0.66392495, 0.57784989, 0.51504675, 0.23495325]),
         # top_k is zero, equal weights.
-        (0, [1] * 5, [], []),
+        (0, [1] * 5, [[]], []),
         # top_k unspecified, unequal weights.
-        (None, [4, 1, 1, 1, 1], [0, 2, 3, 4, 1], [0.51504675, 0.28593691, 0.28593691, 0.2488664, 0.10118886]),
+        (
+            None,
+            [4, 1, 1, 1, 1],
+            [[0, 2, 3, 4, 1], [0, 3, 2, 4, 1]],
+            [0.51504675, 0.28593691, 0.28593691, 0.2488664, 0.10118886],
+        ),
     ],
 )
 def test_calculate_top_similar_keywords_for_doc_expected_output(
-    top_k: Optional[int], counts_doc: Optional[List[int]], expected_idx: List[int], expected_score: List[float]
+    top_k: Optional[int], counts_doc: Optional[List[int]], expected_idx: List[List[int]], expected_score: List[float]
 ) -> None:
-    """Tests _calculate_top_similar_keywords_for_doc returns correct outputs."""
+    """
+    Tests _calculate_top_similar_keywords_for_doc returns correct outputs. There are some hacky assertions happening
+    here due to non-determinism in the order of indices returned when there are equal scores.
+    """
     embeddings_doc: np.ndarray = np.asarray(
         [
             [0.1, 0.2, 0.1, 0.5, 0.2],
@@ -318,7 +326,15 @@ def test_calculate_top_similar_keywords_for_doc_expected_output(
         top_k=top_k,
     )
 
-    np.testing.assert_equal(actual_idx, expected_idx)
+    eidx: List[int]
+    success: bool = False
+
+    for eidx in expected_idx:
+        if actual_idx.tolist() == eidx:
+            success = True
+            break
+
+    assert success
     np.testing.assert_allclose(actual_score, expected_score)
 
 

@@ -12,7 +12,7 @@ configuration of KeyBERT and can handle batches of documents.
 ## Installation ##
 Install from [PyPI](https://pypi.org/project/rsklpr/) using pip (preferred method):
 ```bash
-pip install chunky-bert
+pip install chunkey-bert
 ```
 
 ## Experimental results ##
