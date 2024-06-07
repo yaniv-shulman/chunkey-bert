@@ -14,7 +14,7 @@ however it can also work without a chunker and process the entire document as a 
 configuration of KeyBERT and can handle batches of documents. 
 
 ## Installation ##
-Install from [PyPI](https://pypi.org/project/rsklpr/) using pip (preferred method):
+Install from [PyPI](https://pypi.org/project/chunkey-bert/) using pip (preferred method):
 ```bash
 pip install chunkey-bert
 ```
